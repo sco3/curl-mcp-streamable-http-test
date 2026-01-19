@@ -15,36 +15,10 @@
         }
       },
       {
-        "name": "long_task",
-        "description": "Long running task example",
-        "inputSchema": {
-          "properties": {},
-          "type": "object"
-        }
-      },
-      {
         "name": "say_hello",
         "description": "Say hello to the client",
         "inputSchema": {
           "properties": {},
-          "type": "object"
-        }
-      },
-      {
-        "name": "get_value",
-        "description": "Get the current counter value",
-        "inputSchema": {
-          "properties": {},
-          "type": "object"
-        }
-      },
-      {
-        "name": "echo",
-        "description": "Repeat what you say",
-        "inputSchema": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
-          "additionalProperties": true,
-          "title": "Map_of_AnyValue",
           "type": "object"
         }
       },
@@ -72,10 +46,36 @@
         }
       },
       {
+        "name": "long_task",
+        "description": "Long running task example",
+        "inputSchema": {
+          "properties": {},
+          "type": "object"
+        }
+      },
+      {
         "name": "increment",
         "description": "Increment the counter by 1",
         "inputSchema": {
           "properties": {},
+          "type": "object"
+        }
+      },
+      {
+        "name": "get_value",
+        "description": "Get the current counter value",
+        "inputSchema": {
+          "properties": {},
+          "type": "object"
+        }
+      },
+      {
+        "name": "echo",
+        "description": "Repeat what you say",
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "additionalProperties": true,
+          "title": "Map_of_AnyValue",
           "type": "object"
         }
       }
