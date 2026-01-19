@@ -1,6 +1,6 @@
 #!/usr/bin/env -S bash
 
-set -xueo pipefail
+set -ueo pipefail
 
 URL="http://127.0.0.1:8000/mcp"
 
