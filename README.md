@@ -89,6 +89,44 @@ sequenceDiagram
     Server-->>-Client: tool result
 ```
 
+## Sample run
+
+```
+./test.sh
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "protocolVersion": "2024-11-05",
+    "capabilities": {
+      "prompts": {},
+      "resources": {},
+      "tools": {}
+    },
+    "serverInfo": {
+      "name": "rmcp",
+      "version": "0.13.0"
+    },
+    "instructions": "This server provides counter tools and prompts. Tools: increment, decrement, get_value, say_hello, echo, sum. Prompts: example_prompt (takes a message), counter_analysis (analyzes counter state with a goal)."
+  }
+}
+Session ID: c7007081-f2ba-44c5-a148-93f4aadadaa1
+{
+  "jsonrpc": "2.0",
+  "id": 3,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "0"
+      }
+    ],
+    "isError": false
+  }
+}
+
+```
+
 ## Configuration
 
 To test against a different MCP server, modify the `URL` variable in `test.sh`:
