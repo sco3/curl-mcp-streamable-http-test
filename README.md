@@ -80,13 +80,13 @@ sequenceDiagram
     participant Client
     participant Server
     
-    Client->>Server: initialize
-    Server-->>Client: session-id
+    Client->>+Server: initialize
+    Server-->>-Client: session-id
     Client->>Server: notifications/initialized
-    Client->>Server: tools/list
-    Server-->>Client: tools list
-    Client->>Server: tools/call
-    Server-->>Client: tool result
+    Client->>+Server: tools/list
+    Server-->>-Client: tools list
+    Client->>+Server: tools/call
+    Server-->>-Client: tool result
 ```
 
 ## Configuration
