@@ -1,5 +1,7 @@
 #!/usr/bin/env -S bash
 
+set -ueo pipefail
+
 URL="http://127.0.0.1:8000/mcp"
 
 curl -N -s -X POST \
@@ -19,9 +21,15 @@ curl -N -s -X POST \
     },
     "id": 1
   }' \
-	"$URL" | yq .data | yq -P -o json
+	"$URL" | yq -e '.data' -P -o json
 
 SESSION_ID=$(grep -i "mcp-session-id" headers.txt | cut -d' ' -f2 | tr -d '\r')
+
+if [[ -z "$SESSION_ID" ]]; then
+	echo "Error: Mcp-Session-Id not found in headers.txt" >&2
+	exit 1
+fi
+
 echo "Session ID: $SESSION_ID"
 
 curl -s -X POST \
@@ -42,7 +50,7 @@ curl -s -X POST $URL \
     "jsonrpc": "2.0",
     "id": 2,
     "method": "tools/list"
-  }' | yq .data | yq -P -o json >tools.json
+  }' | yq -e '.data' -P -o json >tools.json
 
 curl -s -X POST $URL \
 	-H "Content-Type: application/json" \
@@ -56,4 +64,4 @@ curl -s -X POST $URL \
       "name": "get_value",
       "arguments": {}
     }
-  }' | yq .data | yq -P -o json
+  }' | yq -e '.data' -P -o json

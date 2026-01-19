@@ -23,16 +23,6 @@
         }
       },
       {
-        "name": "echo",
-        "description": "Repeat what you say",
-        "inputSchema": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
-          "additionalProperties": true,
-          "title": "Map_of_AnyValue",
-          "type": "object"
-        }
-      },
-      {
         "name": "sum",
         "description": "Calculate the sum of two numbers",
         "inputSchema": {
@@ -76,6 +66,16 @@
         "description": "Get the current counter value",
         "inputSchema": {
           "properties": {},
+          "type": "object"
+        }
+      },
+      {
+        "name": "echo",
+        "description": "Repeat what you say",
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "additionalProperties": true,
+          "title": "Map_of_AnyValue",
           "type": "object"
         }
       }
