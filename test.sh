@@ -19,7 +19,7 @@ curl -N -s -X POST \
     },
     "id": 1
   }' \
-	"$URL" | yq .data | yq -P -o json
+	"$URL" | yq '.data' -P -o json
 
 SESSION_ID=$(grep -i "mcp-session-id" headers.txt | cut -d' ' -f2 | tr -d '\r')
 echo "Session ID: $SESSION_ID"
@@ -42,7 +42,7 @@ curl -s -X POST $URL \
     "jsonrpc": "2.0",
     "id": 2,
     "method": "tools/list"
-  }' | yq .data | yq -P -o json >tools.json
+  }' | yq '.data' -P -o json >tools.json
 
 curl -s -X POST $URL \
 	-H "Content-Type: application/json" \
@@ -56,4 +56,4 @@ curl -s -X POST $URL \
       "name": "get_value",
       "arguments": {}
     }
-  }' | yq .data | yq -P -o json
+  }' | yq '.data' -P -o json
