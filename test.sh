@@ -19,7 +19,7 @@ curl -N -s -X POST \
     },
     "id": 1
   }' \
-	"$URL"
+	"$URL" | yq .data | yq -P -o json
 
 SESSION_ID=$(grep -i "mcp-session-id" headers.txt | cut -d' ' -f2 | tr -d '\r')
 echo "Session ID: $SESSION_ID"
@@ -56,4 +56,4 @@ curl -s -X POST $URL \
       "name": "get_value",
       "arguments": {}
     }
-  }'
+  }' | yq .data | yq -P -o json
