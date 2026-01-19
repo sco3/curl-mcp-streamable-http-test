@@ -42,13 +42,13 @@ curl -s -X POST $URL \
     "jsonrpc": "2.0",
     "id": 2,
     "method": "tools/list"
-  }' | yq .data | yq -P -o json > tools.json
+  }' | yq .data | yq -P -o json >tools.json
 
 curl -s -X POST $URL \
-  -H "Content-Type: application/json" \
-  -H "Accept: application/json, text/event-stream" \
-  -H "Mcp-Session-Id: $SESSION_ID" \
-  -d '{
+	-H "Content-Type: application/json" \
+	-H "Accept: application/json, text/event-stream" \
+	-H "Mcp-Session-Id: $SESSION_ID" \
+	-d '{
     "jsonrpc": "2.0",
     "id": 3,
     "method": "tools/call",
