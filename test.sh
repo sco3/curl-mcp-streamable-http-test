@@ -24,6 +24,12 @@ curl -N -s -X POST \
 	"$URL" | yq -e '.data' -P -o json
 
 SESSION_ID=$(grep -i "mcp-session-id" headers.txt | cut -d' ' -f2 | tr -d '\r')
+
+if [[ -z "$SESSION_ID" ]]; then
+	echo "Error: Mcp-Session-Id not found in headers.txt" >&2
+	exit 1
+fi
+
 echo "Session ID: $SESSION_ID"
 
 curl -s -X POST \
