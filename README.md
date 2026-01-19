@@ -75,19 +75,18 @@ Invokes the `get_value` tool as a demonstration of tool execution.
 
 ## MCP Protocol Flow
 
-```
-Client                          Server
-  |                               |
-  |------- initialize ----------->|
-  |<------ session-id ------------|
-  |                               |
-  |--- notifications/initialized->|
-  |                               |
-  |------- tools/list ----------->|
-  |<------ tools list ------------|
-  |                               |
-  |------- tools/call ----------->|
-  |<------ tool result -----------|
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Server
+    
+    Client->>+Server: initialize
+    Server-->>-Client: session-id
+    Client->>Server: notifications/initialized
+    Client->>+Server: tools/list
+    Server-->>-Client: tools list
+    Client->>+Server: tools/call
+    Server-->>-Client: tool result
 ```
 
 ## Configuration
