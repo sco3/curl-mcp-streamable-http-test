@@ -15,12 +15,6 @@ To run the test, execute the following command:
 ```bash
 ./test-init-sse.sh
 ```
-### MCP Inspector
-
-
-```sh
-npx @modelcontextprotocol/inspector
-```
 
 ![Inspecor](inspector.png)
 ![Inspector](inspector.png "MCP Inspector")
@@ -60,6 +54,15 @@ sequenceDiagram
     Script->>Script: Kill background curl
     deactivate Script
 ```
+
+
+### MCP Inspector
+
+
+```sh
+npx @modelcontextprotocol/inspector
+```
+
 
 ## Files
 
