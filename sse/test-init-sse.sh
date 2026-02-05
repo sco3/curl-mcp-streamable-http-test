@@ -29,7 +29,10 @@ curl "$URL_MSG" -d "$INIT"
 curl "$URL_MSG" -d "$NOTIFY"
 curl "$URL_MSG" -d "$LIST"
 for i in $(seq 1 10); do
-	curl "$URL_MSG" -d "$CALL"
+	# Create a new JSON payload with a unique ID for each request.
+	# We start from ID 3 since 1 and 2 are already used.
+	BODY=$(echo "$CALL" | sed "s/\"id\":3/\"id\":$((i+2))/")
+	curl "$URL_MSG" -d "$BODY"
 	sleep .01
 done
 
