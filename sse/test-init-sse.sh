@@ -8,16 +8,18 @@ URL_INIT="${URL}/sse"
 
 SESSION="mcp-time-server$PORT"
 
-tmux kill-session -t $SESSION 2>/dev/null || echo "tmux session not found, ok"
+pkill -9 curl || echo "no curl, ok"
 
-tmux new-session -d -s $SESSION \
-	"curl -N -X GET -H \"Content-Type: application/json\" -H \"Accept: application/json, text/event-stream\" $URL_INIT | tee sse.txt"
+curl -s -N -X GET -H -H "Content-Type: application/json" -H "Accept: application/json, text/event-stream"  "$URL_INIT" > sse.txt &
 
-while [ ! -s sse.txt ]; do sleep 0.01; done
+SERVER_PID=$!
+
+sleep .1
 
 URL_MSG="$URL$(sed -n 's/^data: //p' sse.txt | tr -d '\r' | head -n 1)"
 
 echo "$URL_MSG"
+
 
 INIT='{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-03-26","capabilities":{},"clientInfo":{"name":"demo","version":"0.0.1"}}}'
 
@@ -37,4 +39,4 @@ done
 
 cat sse.txt
 
-tmux kill-session -t $SESSION
+kill "$SERVER_PID" 2>/dev/null || true
