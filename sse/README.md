@@ -15,6 +15,15 @@ To run the test, execute the following command:
 ```bash
 ./test-init-sse.sh
 ```
+### MCP Inspector
+
+
+```sh
+npx @modelcontextprotocol/inspector
+```
+
+![Inspecor](inspector.png)
+![Inspector](inspector.png "MCP Inspector")
 
 **Prerequisites:**
 - A server that implements the tested protocol must be running on `http://127.0.0.1:8888`.
