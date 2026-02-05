@@ -60,8 +60,20 @@ sequenceDiagram
 ```sh
 npx @modelcontextprotocol/inspector
 ```
+Configuration:
+
+```json
+{
+    "type": "sse",
+    "url": "http://localhost:8888/sse",
+    "note": "For SSE connections, add this URL directly in your MCP Client"
+}
+```
+
 
 ![Inspector](inspector.png "MCP Inspector")
+
+
 
 
 ## Files
