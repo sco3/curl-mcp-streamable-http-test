@@ -6,7 +6,7 @@ This project provides a test script to verify Server-Sent Events (SSE) for a str
 
 The `test-init-sse.sh` script simulates a client connecting to an SSE endpoint, sending JSON-RPC messages, and receiving events. The script uses `curl` to manage the HTTP connection and `tmux` to run the client in the background.
 
-The `sse.txt` file is a log of the events received from the server during the test.
+The `sse.txt` file is used to log events from the server during a test run. The version in the repository serves as a sample of the expected output.
 
 ## Usage
 
