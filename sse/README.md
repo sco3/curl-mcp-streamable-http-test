@@ -16,8 +16,6 @@ To run the test, execute the following command:
 ./test-init-sse.sh
 ```
 
-![Inspecor](inspector.png)
-![Inspector](inspector.png "MCP Inspector")
 
 **Prerequisites:**
 - A server that implements the tested protocol must be running on `http://127.0.0.1:8888`.
@@ -62,6 +60,9 @@ sequenceDiagram
 ```sh
 npx @modelcontextprotocol/inspector
 ```
+
+![Inspecor](inspector.png)
+![Inspector](inspector.png "MCP Inspector")
 
 
 ## Files
