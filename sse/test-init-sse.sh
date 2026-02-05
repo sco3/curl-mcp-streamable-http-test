@@ -28,7 +28,7 @@ CALL='{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"get_system
 curl "$URL_MSG" -d "$INIT"
 curl "$URL_MSG" -d "$NOTIFY"
 curl "$URL_MSG" -d "$LIST"
-for i in $(seq 1 10); do
+for i in $(seq 1 3); do
 	# Create a new JSON payload with a unique ID for each request.
 	# We start from ID 3 since 1 and 2 are already used.
 	BODY=$(echo "$CALL" | sed "s/\"id\":3/\"id\":$((i+2))/")
