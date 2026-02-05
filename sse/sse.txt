@@ -1,5 +1,5 @@
 event: endpoint
-data: /message?sessionId=d30a3729-9e40-4767-9bc6-547517d89b25
+data: /message?sessionId=cce372b3-a47c-49dc-9dbc-3244f8000e8d
 
 event: message
 data: {"jsonrpc":"2.0","id":1,"result":{"protocolVersion":"2025-03-26","capabilities":{"logging":{},"prompts":{"listChanged":true},"resources":{"listChanged":true},"tools":{}},"serverInfo":{"name":"fast-time-server","version":"1.5.0"}}}
@@ -8,11 +8,11 @@ event: message
 data: {"jsonrpc":"2.0","id":2,"result":{"tools":[{"annotations":{"title":"Convert Time","readOnlyHint":true,"destructiveHint":false,"idempotentHint":true,"openWorldHint":false},"description":"Convert time between different timezones","inputSchema":{"properties":{"source_timezone":{"description":"Source IANA timezone name","type":"string"},"target_timezone":{"description":"Target IANA timezone name","type":"string"},"time":{"description":"Time to convert in RFC3339 format or common formats like '2006-01-02 15:04:05'","type":"string"}},"required":["time","source_timezone","target_timezone"],"type":"object"},"name":"convert_time"},{"annotations":{"title":"Get System Time","readOnlyHint":true,"destructiveHint":false,"idempotentHint":false,"openWorldHint":false},"description":"Get current system time in specified timezone","inputSchema":{"properties":{"timezone":{"description":"IANA timezone name (e.g., 'America/New_York', 'Europe/London'). Defaults to UTC","type":"string"}},"type":"object"},"name":"get_system_time"}]}}
 
 event: message
-data: {"jsonrpc":"2.0","id":3,"result":{"content":[{"type":"text","text":"2026-02-05T15:24:06Z"}]}}
+data: {"jsonrpc":"2.0","id":3,"result":{"content":[{"type":"text","text":"2026-02-05T15:25:15Z"}]}}
 
 event: message
-data: {"jsonrpc":"2.0","id":4,"result":{"content":[{"type":"text","text":"2026-02-05T15:24:06Z"}]}}
+data: {"jsonrpc":"2.0","id":4,"result":{"content":[{"type":"text","text":"2026-02-05T15:25:15Z"}]}}
 
 event: message
-data: {"jsonrpc":"2.0","id":5,"result":{"content":[{"type":"text","text":"2026-02-05T15:24:06Z"}]}}
+data: {"jsonrpc":"2.0","id":5,"result":{"content":[{"type":"text","text":"2026-02-05T15:25:15Z"}]}}
 
