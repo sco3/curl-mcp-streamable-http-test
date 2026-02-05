@@ -13,7 +13,7 @@ tmux kill-session -t $SESSION || echo session not found
 tmux new-session -d -s $SESSION \
 	"curl -N -X GET -H \"Content-Type: application/json\" -H \"Accept: application/json, text/event-stream\" $URL_INIT | tee sse.txt"
 
-sleep .1
+while [ ! -s sse.txt ]; do sleep 0.01; done
 
 URL_MSG="$URL$(sed -n 's/^data: //p' sse.txt | tr -d '\r' | head -n 1)"
 
