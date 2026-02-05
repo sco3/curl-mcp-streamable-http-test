@@ -61,7 +61,6 @@ sequenceDiagram
 npx @modelcontextprotocol/inspector
 ```
 
-![Inspecor](inspector.png)
 ![Inspector](inspector.png "MCP Inspector")
 
 
