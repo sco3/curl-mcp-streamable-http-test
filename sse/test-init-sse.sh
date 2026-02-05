@@ -8,7 +8,7 @@ URL_INIT="${URL}/sse"
 
 SESSION="mcp-time-server$PORT"
 
-tmux kill-session -t $SESSION || echo session not found
+tmux kill-session -t $SESSION 2>/dev/null || echo "tmux session not found, ok"
 
 tmux new-session -d -s $SESSION \
 	"curl -N -X GET -H \"Content-Type: application/json\" -H \"Accept: application/json, text/event-stream\" $URL_INIT | tee sse.txt"
