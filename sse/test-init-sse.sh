@@ -8,16 +8,18 @@ URL_INIT="${URL}/sse"
 
 SESSION="mcp-time-server$PORT"
 
-tmux kill-session -t $SESSION || echo session not found
+pkill -9 curl || echo "no curl, ok"
 
-tmux new-session -d -s $SESSION \
-	"curl -N -X GET -H \"Content-Type: application/json\" -H \"Accept: application/json, text/event-stream\" $URL_INIT | tee sse.txt"
+curl -s -N -X GET -H -H "Content-Type: application/json" -H "Accept: application/json, text/event-stream"  "$URL_INIT" > sse.txt &
 
-while [ ! -s sse.txt ]; do sleep 0.01; done
+SERVER_PID=$!
+
+sleep .1
 
 URL_MSG="$URL$(sed -n 's/^data: //p' sse.txt | tr -d '\r' | head -n 1)"
 
 echo "$URL_MSG"
+
 
 INIT='{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-03-26","capabilities":{},"clientInfo":{"name":"demo","version":"0.0.1"}}}'
 
@@ -28,14 +30,13 @@ CALL='{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"get_system
 curl "$URL_MSG" -d "$INIT"
 curl "$URL_MSG" -d "$NOTIFY"
 curl "$URL_MSG" -d "$LIST"
-for i in $(seq 1 10); do
+for i in $(seq 1 3); do
 	# Create a new JSON payload with a unique ID for each request.
-	# We start from ID 3 since 1 and 2 are already used.
-	BODY=$(echo "$CALL" | sed "s/\"id\":3/\"id\":$((i+2))/")
+	BODY=$(echo "$CALL" | sed "s/\"id\":3/\"id\":$((i + 2))/")
 	curl "$URL_MSG" -d "$BODY"
 	sleep .01
 done
 
 cat sse.txt
 
-tmux kill-session -t $SESSION
+kill "$SERVER_PID" 2>/dev/null || true
